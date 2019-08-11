@@ -1,0 +1,16 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'clocks\style.css' %}" type="text/css">
+
+<h1>All created clocks</h1>
+
+{% for clock in clocks %}
+    <div id="{{forloop.counter}}" name="clock">
+        <table>
+            <td><img width=300 height=300 src="{% static clock.display %}"></td>
+            <td>
+                <h2>{{clock.name}}</h2>
+                <p>{{clock.description}}</p>
+            </td>
+        </table>
+    </div>
+{% endfor %}
