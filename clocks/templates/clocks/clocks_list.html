@@ -1,0 +1,15 @@
+{% extends 'blog/clocks.html' %}
+
+{% block content %}
+    {% for clock in clocks %}
+        <div calss="post">
+            <table>
+                <td><img width=300 height=300 src="{% static clock.display %}"></td>
+                <td>
+                    <h2>{{clock.name}}</h2>
+                    <p>{{clock.description}}</p>
+                </td>
+            </table>
+        </div>
+    {% endfor %}
+{% endblock %}

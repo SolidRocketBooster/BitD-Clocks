@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Clock(models.Model):
         types = [(8, '8-hours'), (6, '6-hours'), (4, '4-hours')]
         
@@ -11,12 +12,7 @@ class Clock(models.Model):
 
         def display(self):
                 return "clocks\\images\\" + "Progress Clock " + str(self.clock_type) + "-" + str(self.compleation) + ".png"
-        
-        def increase(self):
-                self.compleation =+ 1
-        
-        def decrease(self):
-                self.compleation =- 1
 
         def __str__(self):
                 return self.name
+
