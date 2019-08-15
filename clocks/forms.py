@@ -1,7 +1,7 @@
-from django.forms import ModelForm
+from django import forms
 from .models import Clock
 
-class ClockForm(ModelForm):
+class ClockForm(forms.ModelForm):
     class Meta:
         model = Clock
-        fields = ("name", "description", "clock_type", "following_clock")
+        fields = ("title", "description", "clock_type", "compleation" , "following_clock")

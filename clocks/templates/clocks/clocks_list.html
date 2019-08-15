@@ -1,15 +1,19 @@
-{% extends 'blog/clocks.html' %}
+{% extends 'clocks/clocks.html' %}
+{% load static %}
 
 {% block content %}
-    {% for clock in clocks %}
-        <div calss="post">
-            <table>
-                <td><img width=300 height=300 src="{% static clock.display %}"></td>
-                <td>
-                    <h2>{{clock.name}}</h2>
-                    <p>{{clock.description}}</p>
-                </td>
-            </table>
-        </div>
-    {% endfor %}
+
+    <div class="card-deck">
+        {% for clock in clocks %}
+            <div class="card bg-white border-dark mw-300px">
+                <img class="card-img-top" src="{% static clock.display %}">
+                <div class="card-body">
+                    <h2 class="card-title text-center">{{clock.title}}</h2>
+                    <p class="card-text text-secondary">{{clock.description|linebreaksbr}}</p>
+                    <a class="btn btn-secondary" href="{% url 'clocks_edit' pk=clock.pk %}">Edit</a>
+                    <a class="btn btn-secondary" href="{% url 'clocks_delete' pk=clock.pk %}">Delete</span></a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

@@ -1,25 +1,7 @@
-body {
-    background: linear-gradient(180deg,#2b2c31,#4c4d52 20%) no-repeat fixed;
-    color: #2b2c31;
-    font-family: "Zilla Slab",HelveticaNeue,Helvetica,Arial,sans-serif;
-    font-size: 1.125rem;
-    line-height: 1.3em;
+.card {
+    max-width: 300px;
 }
 
-td {
-    vertical-align: top;
-    background-color: #bbbbbb;
-    width: 400px
-}
-
-h1 h2 {
-    font-family: anton, sans-serif;
-    font-style: normal;
-    font-weight: 400;
-}
-
-p {
-    font-family: great-primer, sans-serif;
-    font-style: normal;
-    font-weight: bold;
+.btn btn-primary {
+    color: darkgrey;
 }
