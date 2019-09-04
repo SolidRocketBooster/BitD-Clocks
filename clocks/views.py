@@ -4,11 +4,6 @@ from .forms import ClockForm
 
 def ClocksView(request):
     clocks = Clock.objects.all()
-    title_contains = request.GET.get('title_contains')
-
-    if title_contains is not ['', None]:
-        clocks = clocks.filter(title__icontains=title_contains)
-    
     return render(request, 'clocks\clocks_list.html', {'clocks': clocks})
 
 def postNew(request):
@@ -37,7 +32,15 @@ def clockEdit(request, pk):
 def clockDelete(request, pk):
     clock = get_object_or_404(Clock, pk=pk)
     clock.delete()
-    return render(request, 'clocks\clocks_list.html', {'clocks': Clock.objects.all()})
+    return redirect('clocks_list')
 
+def clockUp(request, pk):
+    clock = get_object_or_404(Clock, pk=pk)
+    clock.increase()
+    return redirect('clocks_list')
 
-# Create your views here.
+def clockDown(request, pk):
+    clock = get_object_or_404(Clock, pk=pk)
+    clock.decrease()
+    return redirect('clocks_list')
+

@@ -2,16 +2,26 @@
 {% load static %}
 
 {% block content %}
-
     <div class="card-deck">
         {% for clock in clocks %}
             <div class="card bg-white border-dark mw-300px">
                 <img class="card-img-top" src="{% static clock.display %}">
+                <div class="card-img-overlay">
+                    <a class="btn-secondary float-left btn-sm" href="{% url 'clocks_up' pk=clock.pk %}"><i class="material-icons">arrow_drop_up</i></a>
+                    <a class="btn-secondary float-right btn-sm" href="{% url 'clocks_down' pk=clock.pk %}"><i class="material-icons">arrow_drop_down</i></a>
+                </div>
                 <div class="card-body">
                     <h2 class="card-title text-center">{{clock.title}}</h2>
                     <p class="card-text text-secondary">{{clock.description|linebreaksbr}}</p>
-                    <a class="btn btn-secondary" href="{% url 'clocks_edit' pk=clock.pk %}">Edit</a>
-                    <a class="btn btn-secondary" href="{% url 'clocks_delete' pk=clock.pk %}">Delete</span></a>
+                    <div class="btn-group" role="group">
+                        <button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="material-icons">settings</i>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                            <a class="dropdown-item" href="{% url 'clocks_edit' pk=clock.pk %}">Edit</a>
+                            <a class="dropdown-item" href="{% url 'clocks_delete' pk=clock.pk %}">Delete</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         {% endfor %}
